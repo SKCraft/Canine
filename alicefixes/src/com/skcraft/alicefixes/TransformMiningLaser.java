@@ -63,7 +63,7 @@ public class TransformMiningLaser implements IClassTransformer{
 						"com/skcraft/alicefixes/TransformMiningLaser",
 						"canMine",
 						"(L" + ObfNames.ENTITY + ";L" + ObfNames.ENTITY_LIVING + ";)Z"));
-				toInject.add(new JumpInsnNode(IFEQ, l1));  //if statement
+				toInject.add(new JumpInsnNode(IFNE, l1));  //if statement
 				toInject.add(l2);
 				toInject.add(new InsnNode(ICONST_0));  //false
 				toInject.add(new InsnNode(IRETURN));  //return
