@@ -22,10 +22,11 @@ import org.objectweb.asm.tree.VarInsnNode;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.IClassTransformer;
 
+// THIS MAY NOT WORK WHEN THE NEW RP COMES OUT (if it ever does...)
 public class TransformBlockBreaker implements IClassTransformer {
 
     @Override
-    public byte[] transform(String name, byte[] bytes) {
+    public byte[] transform(String name, String transformedName, byte[] bytes) {
         if(name.equals("com.eloraam.redpower.machine.TileBreaker")) {
             return handleBreakerTransform(bytes);
         }

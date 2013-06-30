@@ -30,16 +30,4 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
 
     @Override
     public void injectData(Map<String, Object> data) {}
-
-    public static String[] getTransformers() {
-        return new String[] { "com.skcraft.alicefixes.TransformMiningLaser",
-                              "com.skcraft.alicefixes.TransformBlockBreaker"
-                              /*"com.skcraft.alicefixes.TransformIC2Explosions",
-                              "com.skcraft.alicefixes.TransformTCExcWand",
-                              "com.skcraft.alicefixes.TransformTCEquWand",
-                              "com.skcraft.alicefixes.TransformTCFrostWand",
-                              "com.skcraft.alicefixes.TransformTCAxe",
-                              "com.skcraft.alicefixes.TransformTCShovel"*/};
-    }
-
 }

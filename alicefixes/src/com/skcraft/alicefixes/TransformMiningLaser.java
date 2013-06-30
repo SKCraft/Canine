@@ -34,13 +34,13 @@ public class TransformMiningLaser implements IClassTransformer{
     private final String MINE_METHOD_NAME = "canMine";
 
     @Override
-    public byte[] transform(String name, byte[] bytes) {
+    public byte[] transform(String name, String transformedName, byte[] bytes) {
         if(name.equals(LASER_CLASS_NAME)) {
             return handleLaserTransform(bytes);
         }
         return bytes;
     }
-
+    
     private byte[] handleLaserTransform(byte[] bytes) {
 
         ClassNode classNode = new ClassNode();
