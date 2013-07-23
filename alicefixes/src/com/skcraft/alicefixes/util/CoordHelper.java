@@ -1,10 +1,8 @@
-package com.skcraft.alicefixes;
+package com.skcraft.alicefixes.util;
 
 public class CoordHelper {
 
-    int x;
-    int y;
-    int z;
+    public int x, y, z;
 
     public CoordHelper(int x, int y, int z) {
         this.x = x;
