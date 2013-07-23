@@ -7,7 +7,7 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="reobf.dir" value="${mcp.dir}/reobf"/>
     <property name="download.dir" value="download"/>
-    <property name="af.version" value="1.0.0"/>
+    <property name="af.version" value="1.1.0"/>
     <property name="forge.version" value="7.8.1.737"/>
     <property name="mc.version" value="1.5.2"/>
     <property name="forge.name" value="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
@@ -33,7 +33,7 @@
     <target name="fetch-dependencies" if="missing-dependencies">
         <mkdir dir="${download.dir}"/>
         <get src="http://files.minecraftforge.net/${forge.name}" dest="${download.dir}"/>
-        <get src="http://ci.md-5.net/job/MCPC-API/32/za.co.mcportcentral$mcpc-api/artifact/za.co.mcportcentral/mcpc-api/1.5.2-R1.1-20130625.013809-4/mcpc-api-1.5.2-R1.1-20130625.013809-4.jar" dest="${download.dir}/${mcpc.name}"/>
+        <get src="http://ci.md-5.net/job/MCPC-API-Legacy/32/za.co.mcportcentral$mcpc-api/artifact/za.co.mcportcentral/mcpc-api/1.5.2-R1.1-20130625.013809-4/mcpc-api-1.5.2-R1.1-20130625.013809-4.jar" dest="${download.dir}/${mcpc.name}"/>
     </target>
     
     <!-- Setup Forge/MCP -->
