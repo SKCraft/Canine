@@ -1,11 +1,10 @@
 package com.skcraft.alicefixes;
 
+import com.skcraft.alicefixes.util.ASMHelper;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
+
 import java.util.Map;
 
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
-
-@TransformerExclusions("com.skcraft.alicefixes")
 public class LoadingPlugin implements IFMLLoadingPlugin {
 
     @Override
