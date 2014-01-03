@@ -1,10 +1,9 @@
 package com.skcraft.alicefixes.util;
 
+import com.skcraft.alicefixes.BreakerBlacklist;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -37,6 +36,21 @@ public class ASMHelper {
             return false;
         }
 
+        return true;
+    }
+
+    public static boolean canTileMine(TileEntity tile, byte facing) {
+        if(tile == null) return true;
+
+        CoordHelper target = new CoordHelper(tile.xCoord, tile.yCoord, tile.zCoord);
+        target.addFacingAsOffset(facing);
+        int id = tile.worldObj.getBlockId(target.x, target.y, target.z);
+
+        for(int blacklisted : BreakerBlacklist.getBlacklist()) {
+            if(id == blacklisted) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -100,6 +114,7 @@ public class ASMHelper {
         mappings.put("World", "abw");
         mappings.put("ItemStack", "ye");
         mappings.put("EntityLivingBase", "of");
+        mappings.put("TileEntity", "asp");
         mappings.put("WorldObj", "field_70170_p");
     }
 }

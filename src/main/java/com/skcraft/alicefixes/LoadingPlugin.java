@@ -1,8 +1,6 @@
 package com.skcraft.alicefixes;
 
-import com.skcraft.alicefixes.util.ASMHelper;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
-
 import java.util.Map;
 
 public class LoadingPlugin implements IFMLLoadingPlugin {

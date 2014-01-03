@@ -11,6 +11,7 @@ public class AliceFixes {
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt) {
         MinecraftForge.EVENT_BUS.register(new AFListener());
+        BreakerBlacklist.load();
     }
 
 }
