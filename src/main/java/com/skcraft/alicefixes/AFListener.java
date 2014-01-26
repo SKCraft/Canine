@@ -9,7 +9,7 @@ public class AFListener {
 
     @ForgeSubscribe
     public void onLaserHitBlock(LaserHitsBlockEvent evt) {
-        if(!ASMHelper.canMine(evt.owner, null, evt.x, evt.y, evt.z)) {
+        if(!ASMHelper.canMine(evt.owner, evt.x, evt.y, evt.z, false, this)) {
             evt.lasershot.setDead();
             evt.setCanceled(true);
         }
@@ -17,7 +17,7 @@ public class AFListener {
 
     @ForgeSubscribe
     public void onLaserExplode(LaserExplodesEvent evt) {
-        if(!ASMHelper.canMine(evt.owner, null, (int)evt.lasershot.posX, (int)evt.lasershot.posY, (int)evt.lasershot.posZ)) {
+        if(!ASMHelper.canMine(evt.owner, (int)evt.lasershot.posX, (int)evt.lasershot.posY, (int)evt.lasershot.posZ, false, this)) {
             evt.lasershot.setDead();
             evt.setCanceled(true);
         }

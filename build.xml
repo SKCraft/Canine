@@ -7,7 +7,7 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="reobf.dir" value="${mcp.dir}/reobf"/>
     <property name="download.dir" value="download"/>
-    <property name="af.version" value="1.2.0"/>
+    <property name="af.version" value="2.0.0"/>
     <property name="forge.version" value="9.11.1.933"/>
     <property name="mc.version" value="1.6.4"/>
     <property name="forge.name" value="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
@@ -93,7 +93,9 @@
     
     <target name="package" depends="compile">
         <jar destfile="${build.dir}/AliceFixes-${af.version}.jar" basedir="${classes.dir}">
+            <zipfileset includes="**/*.class" src="${mcp.dir}/jars/libraries/com/google/code/gson/gson/2.2.2/gson-2.2.2.jar"/>
             <manifest>
+                <attribute name="Main-Class" value="com.skcraft.alicefixes.jsongenerator.Generator"/>
                 <attribute name="FMLCorePlugin" value="com.skcraft.alicefixes.LoadingPlugin"/>
                 <attribute name="FMLCorePluginContainsFMLMod" value="true"/>
             </manifest>

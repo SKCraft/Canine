@@ -1,9 +1,17 @@
 package com.skcraft.alicefixes;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
+
+import java.io.File;
 import java.util.Map;
 
 public class LoadingPlugin implements IFMLLoadingPlugin {
+
+    private static File mcDir;
+
+    public static File getMCDirectory() {
+        return mcDir;
+    }
 
     @Override
     public String[] getLibraryRequestClass() {
@@ -26,5 +34,7 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
     }
 
     @Override
-    public void injectData(Map<String, Object> data) {}
+    public void injectData(Map<String, Object> data) {
+        mcDir = (File)data.get("mcLocation");
+    }
 }
