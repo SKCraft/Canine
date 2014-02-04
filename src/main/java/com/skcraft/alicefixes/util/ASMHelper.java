@@ -159,6 +159,9 @@ public class ASMHelper {
             mv.visitInsn(IRETURN);
         } else if(returnType.equals("void")) {
             mv.visitInsn(RETURN);
+        } else if(returnType.equals("int")) {
+            mv.visitInsn(ICONST_0);
+            mv.visitInsn(IRETURN);
         } else {
             //Not sure if this will turn out so well in every case...
             mv.visitVarInsn(ALOAD, ACONST_NULL);
