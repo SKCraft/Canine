@@ -20,6 +20,7 @@ public class Blacklist {
         try {
             Gson gson = new Gson();
             config = new File(configDir, "Blacklists.json");
+            config.createNewFile();
             BufferedReader br = new BufferedReader(new FileReader(config));
             BlackLists storedLists = gson.fromJson(br, BlackLists.class);
             if(storedLists != null) {

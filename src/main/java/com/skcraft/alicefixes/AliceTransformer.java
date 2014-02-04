@@ -29,7 +29,7 @@ public class AliceTransformer implements IClassTransformer {
             Blacklist.load(configDir);
             File configFile = new File(configDir, "AFPatches.json");
 
-            if(configFile.isFile()) {
+            if(!configFile.createNewFile()) {
                 Gson gson = new Gson();
                 JsonObject obj = parser.parse(FileUtils.readFileToString(configFile)).getAsJsonObject();
                 PatchList patchList = gson.fromJson(obj, PatchList.class);
