@@ -2,14 +2,13 @@ package com.skcraft.alicefixes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import cpw.mods.fml.common.FMLLog;
 import org.apache.commons.io.FileUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class Blacklist {
 
@@ -28,8 +27,12 @@ public class Blacklist {
             }
             br.close();
         }
-        catch(Throwable t) {
-            t.printStackTrace();
+        catch(FileNotFoundException e) {
+            FMLLog.log("AliceFixes", Level.WARNING, "%s", "Failed to find blacklists file!");
+        }
+        catch(IOException e) {
+            FMLLog.log("AliceFixes", Level.WARNING, "%s", "Error while loading the blacklists file: " + e);
+            e.printStackTrace();
         }
     }
 
@@ -38,8 +41,9 @@ public class Blacklist {
         try {
             lists.setBlacklists(blacklists);
             FileUtils.writeStringToFile(config, gson.toJson(lists));
-        } catch(Throwable t) {
-            t.printStackTrace();
+        } catch(IOException e) {
+            FMLLog.log("AliceFixes", Level.WARNING, "%s", "Error saving the blacklists file: " + e);
+            e.printStackTrace();
         }
     }
 

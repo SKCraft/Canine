@@ -12,6 +12,7 @@ import net.minecraft.launchwrapper.IClassTransformer;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 
@@ -43,8 +44,9 @@ public class AliceTransformer implements IClassTransformer {
                     }
                 }
             }
-        } catch(Throwable t) {
-            t.printStackTrace();
+        } catch(IOException e) {
+            FMLLog.log("AliceFixes", Level.WARNING, "%s", "Error while loading the patches file: " + e);
+            e.printStackTrace();
         }
     }
 

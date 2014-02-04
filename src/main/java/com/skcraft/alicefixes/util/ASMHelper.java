@@ -2,6 +2,7 @@ package com.skcraft.alicefixes.util;
 
 import com.skcraft.alicefixes.AliceTransformer;
 import com.skcraft.alicefixes.Blacklist;
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
@@ -12,6 +13,7 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 
 import java.lang.reflect.Method;
+import java.util.logging.Level;
 
 import static org.objectweb.asm.Opcodes.*;
 
@@ -89,8 +91,9 @@ public class ASMHelper {
                 }
                 breakEvt.setCancelled(true);
             }
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(Throwable t) {
+            FMLLog.log("AliceFixes", Level.SEVERE, "%s", "Error while firing Bukkit event: " + t);
+            t.printStackTrace();
         }
         return true;
     }
