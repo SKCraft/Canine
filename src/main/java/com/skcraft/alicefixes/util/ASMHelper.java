@@ -98,14 +98,14 @@ public class ASMHelper {
         return true;
     }
 
-    public static void injectCode(MethodVisitor mv, int entityVar, int xVar, int yVar, int zVar, String returnType) {
+    public static void injectCode(MethodVisitor mv, int entityVar, int xVar, int yVar, int zVar, String returnType, boolean blacklist) {
         Label l0 = new Label();
         mv.visitLabel(l0);
         mv.visitVarInsn(ALOAD, entityVar);
         mv.visitVarInsn(ILOAD, xVar);
         mv.visitVarInsn(ILOAD, yVar);
         mv.visitVarInsn(ILOAD, zVar);
-        mv.visitInsn(ICONST_0);
+        mv.visitInsn(blacklist ? ICONST_1 : ICONST_0);
         mv.visitVarInsn(ALOAD, 0);
         mv.visitMethodInsn(INVOKESTATIC, "com/skcraft/alicefixes/util/ASMHelper",
                 "canMine", "(L" + Obfs.get("EntityLivingBase") + ";IIIZLjava/lang/Object;)Z");
@@ -118,11 +118,11 @@ public class ASMHelper {
         mv.visitCode();
     }
 
-    public static void injectCode(MethodVisitor mv, int entityVar, String returnType) {
+    public static void injectCode(MethodVisitor mv, int entityVar, String returnType, boolean blacklist) {
         Label l0 = new Label();
         mv.visitLabel(l0);
         mv.visitVarInsn(ALOAD, entityVar);
-        mv.visitInsn(ICONST_0);
+        mv.visitInsn(blacklist ? ICONST_1 : ICONST_0);
         mv.visitVarInsn(ALOAD, 0);
         mv.visitMethodInsn(INVOKESTATIC, "com/skcraft/alicefixes/util/ASMHelper",
                 "canMine", "(L" + Obfs.get("EntityLivingBase") + ";ZLjava/lang/Object;)Z");
@@ -135,13 +135,13 @@ public class ASMHelper {
         mv.visitCode();
     }
 
-    public static void injectCode(MethodVisitor mv, String className, String facingName, String facingType, String returnType) {
+    public static void injectCode(MethodVisitor mv, String className, String facingName, String facingType, String returnType, boolean blacklist) {
         Label l0 = new Label();
         mv.visitLabel(l0);
         mv.visitVarInsn(ALOAD, 0);
         mv.visitVarInsn(ALOAD, 0);
         mv.visitFieldInsn(GETFIELD, className.replace('.', '/'), facingName, AliceTransformer.primitives.get(facingType));
-        mv.visitInsn(ICONST_1);
+        mv.visitInsn(blacklist ? ICONST_1 : ICONST_0);
         mv.visitVarInsn(ALOAD, 0);
         mv.visitMethodInsn(INVOKESTATIC,
                 "com/skcraft/alicefixes/util/ASMHelper",

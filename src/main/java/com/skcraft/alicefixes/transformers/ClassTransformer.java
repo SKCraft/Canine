@@ -74,12 +74,12 @@ public class ClassTransformer implements IClassTransformer {
         public void visitCode() {
             if(!patch.tileEntity) {
                 if(vars.size() == 1) {
-                    ASMHelper.injectCode(mv, vars.get(0), patch.returnType);
+                    ASMHelper.injectCode(mv, vars.get(0), patch.returnType, patch.blacklist);
                 } else if(vars.size() == 4) {
-                    ASMHelper.injectCode(mv, vars.get(0), vars.get(1), vars.get(2), vars.get(3), patch.returnType);
+                    ASMHelper.injectCode(mv, vars.get(0), vars.get(1), vars.get(2), vars.get(3), patch.returnType, patch.blacklist);
                 }
             } else {
-                ASMHelper.injectCode(mv, patch.className, patch.facingVar, patch.varType, patch.returnType);
+                ASMHelper.injectCode(mv, patch.className, patch.facingVar, patch.varType, patch.returnType, patch.blacklist);
             }
         }
     }
