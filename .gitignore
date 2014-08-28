@@ -1,8 +1,8 @@
+.gradle
 /build
-/*.bat
-/forge
-/bin
-/download
-/.project
-/.classpath
-/*.iml
+/eclipse
+/libs
+/out
+*.iml
+*.ipr
+*.iws

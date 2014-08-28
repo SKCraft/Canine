@@ -1,11 +1,11 @@
-package com.skcraft.alicefixes;
+package com.skcraft.canine.forge;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
 import java.io.File;
 import java.util.Map;
 
-public class LoadingPlugin implements IFMLLoadingPlugin {
+public class CaninePlugin implements IFMLLoadingPlugin {
 
     private static File mcDir;
 
@@ -14,13 +14,8 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
     }
 
     @Override
-    public String[] getLibraryRequestClass() {
-        return null;
-    }
-
-    @Override
     public String[] getASMTransformerClass() {
-        return new String[] { "com.skcraft.alicefixes.AliceTransformer" };
+        return new String[] { "com.skcraft.canine.forge.CanineTransformer" };
     }
 
     @Override
@@ -36,5 +31,10 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
     @Override
     public void injectData(Map<String, Object> data) {
         mcDir = (File)data.get("mcLocation");
+    }
+
+    @Override
+    public String getAccessTransformerClass() {
+        return null;
     }
 }
